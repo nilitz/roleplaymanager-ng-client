@@ -12,9 +12,9 @@ export class JwtClientService {
     return this.http.post('http://localhost:9192/authenticate', request, {responseType: 'text' as 'json'});
   }
 
-  public welcome(token: string) {
+  public isAuthenticated(token: string) {
     const tokenStr = 'Bearer ' + token;
     const headers = new HttpHeaders().set('Authorization', tokenStr);
-    return this.http.get('http://localhost:9192/', {headers, responseType: 'text' as 'json'});
+    return this.http.get('http://localhost:9192/authenticated', {headers, responseType: 'text' as 'json'});
   }
 }

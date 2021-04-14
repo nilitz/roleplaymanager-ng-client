@@ -13,7 +13,7 @@ export class SecurityComponent implements OnInit {
     password: 'password'
   };
 
-  response: any;
+  authenticated: any;
 
   constructor(private service: JwtClientService) { }
 
@@ -23,14 +23,12 @@ export class SecurityComponent implements OnInit {
 
   public getAccessToken(authRequest: any) {
     const resp = this.service.generateToken(authRequest);
-    resp.subscribe(data => this.accessApi(data.toString()));
+    resp.subscribe(data => this.checkAuthentication(data.toString()));
 
   }
 
-  public accessApi(token: string) {
-    console.log(token);
-    const resp = this.service.welcome(token);
-    resp.subscribe(data => this.response = data);
+  public checkAuthentication(token: string) {
+    const resp = this.service.isAuthenticated(token);
+    resp.subscribe(data => this.authenticated = data);
   }
-
 }
