@@ -13,6 +13,8 @@ export class SecurityComponent implements OnInit {
     password: 'password'
   };
 
+  response: any;
+
   constructor(private service: JwtClientService) { }
 
   ngOnInit(): void {
@@ -21,8 +23,14 @@ export class SecurityComponent implements OnInit {
 
   public getAccessToken(authRequest: any) {
     const resp = this.service.generateToken(authRequest);
-    resp.subscribe(data => console.log('Token : ' + data));
+    resp.subscribe(data => this.accessApi(data.toString()));
 
+  }
+
+  public accessApi(token: string) {
+    console.log(token);
+    const resp = this.service.welcome(token);
+    resp.subscribe(data => this.response = data);
   }
 
 }
