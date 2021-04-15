@@ -9,7 +9,7 @@ import {JwtClientService} from '../jwt-client.service';
 export class SecurityComponent implements OnInit {
 
   authRequest: any = {
-    username: 'hugo',
+    username: 'mario',
     password: 'password'
   };
 
@@ -21,14 +21,9 @@ export class SecurityComponent implements OnInit {
     this.getAccessToken(this.authRequest);
   }
 
-  public getAccessToken(authRequest: any) {
-    const resp = this.service.generateToken(authRequest);
-    resp.subscribe(data => this.checkAuthentication(data.toString()));
-
+  public getAccessToken(authRequest: any): void {
+    const resp = this.service.authenticate(authRequest);
+    resp.subscribe(data => this.authenticated = true);
   }
 
-  public checkAuthentication(token: string) {
-    const resp = this.service.isAuthenticated(token);
-    resp.subscribe(data => this.authenticated = data);
-  }
 }

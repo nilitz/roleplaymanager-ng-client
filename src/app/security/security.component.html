@@ -1,3 +1,52 @@
-<p>security works!</p>
+<div class="authentication-container">
+
+  <mat-card class="authentication-card">
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Login">
+
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Username</mat-label>
+            <input matInput required>
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Password</mat-label>
+            <input matInput required>
+            <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+        </p>
+
+      </mat-tab>
+      <mat-tab label="Register">
+
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Username</mat-label>
+            <input matInput required>
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Password</mat-label>
+            <input matInput required>
+            <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="name@example.com" required>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </p>
+
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>
 
 <h1>{{authenticated}}</h1>
