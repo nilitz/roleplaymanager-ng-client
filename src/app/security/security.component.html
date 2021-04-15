@@ -7,46 +7,51 @@
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Username</mat-label>
-            <input matInput required>
+            <input matInput [(ngModel)]="authRequest.username" required>
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Password</mat-label>
-            <input matInput required>
+            <input type="password" matInput [(ngModel)]="authRequest.password" required>
             <mat-icon matSuffix>lock</mat-icon>
           </mat-form-field>
         </p>
-
+        <button mat-button color="primary" (click)="getAccessToken()">Login</button>
       </mat-tab>
       <mat-tab label="Register">
-
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Username</mat-label>
-            <input matInput required>
+            <input matInput [(ngModel)]="authRequest.username" required>
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Password</mat-label>
-            <input matInput required>
+            <input type="password" matInput [(ngModel)]="authRequest.password" required>
+            <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Confirm password</mat-label>
+            <input type="password" matInput [(ngModel)]="authRequest.passwordConfirmation" required>
             <mat-icon matSuffix>lock</mat-icon>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="name@example.com" required>
+            <input type="email" matInput [(ngModel)]="authRequest.email" placeholder="name@example.com" required>
             <mat-icon matSuffix>email</mat-icon>
           </mat-form-field>
         </p>
-
+        <button mat-button color="primary" (click)="getRegisterToken()">Register</button>
       </mat-tab>
     </mat-tab-group>
+    <button mat-button color="primary" (click)="getUser()">Get user</button>
   </mat-card>
 </div>
-
-<h1>{{authenticated}}</h1>

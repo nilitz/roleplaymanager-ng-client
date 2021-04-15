@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {JwtClientService} from '../jwt-client.service';
 
 @Component({
@@ -6,24 +6,44 @@ import {JwtClientService} from '../jwt-client.service';
   templateUrl: './security.component.html',
   styleUrls: ['./security.component.sass']
 })
-export class SecurityComponent implements OnInit {
+export class SecurityComponent {
 
-  authRequest: any = {
-    username: 'mario',
-    password: 'password'
+  authRequest: { passwordConfirmation: string; password: string; email: string; username: string } = {
+    username: '',
+    password: '',
+    passwordConfirmation: '',
+    email: ''
   };
 
-  authenticated: any;
+  token: any;
 
-  constructor(private service: JwtClientService) { }
+  constructor(private service: JwtClientService) {}
 
-  ngOnInit(): void {
-    this.getAccessToken(this.authRequest);
+  public getRegisterToken(): void {
+    const resp = this.service.signIn(this.authRequest);
+    resp.subscribe(data => {
+      this.token = data;
+      localStorage.setItem('jwt-roleplaymanager', JSON.stringify({ token: this.token}));
+    });
   }
 
-  public getAccessToken(authRequest: any): void {
-    const resp = this.service.authenticate(authRequest);
-    resp.subscribe(data => this.authenticated = true);
+  public getUser(): void {
+    const currentUser = JSON.parse(<string> localStorage.getItem('jwt-roleplaymanager'));
+    const token = currentUser.token; // your token
+    console.log(token);
+
+    const resp = this.service.getUser(token);
+    resp.subscribe(data => {
+      console.log(data)
+    });
+  }
+
+  public getAccessToken(): void {
+    const resp = this.service.login(this.authRequest);
+    resp.subscribe(data => {
+      this.token = data;
+      localStorage.setItem('currentUser', JSON.stringify({ token: this.token, name: 'roleplaymanagertoken' }));
+    });
   }
 
 }
