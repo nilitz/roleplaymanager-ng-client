@@ -9,12 +9,12 @@ export class JwtClientService {
 
   constructor(private http: HttpClient) { }
 
-  public login(request: any): Observable<any> {
-    return this.http.post('http://localhost:9192/api/v1/authenticate', request, {responseType: 'text' as 'json'});
+  public postLogIn(request: any): Observable<any> {
+    return this.http.post('http://localhost:9192/api/v1/login', request, {responseType: 'text' as 'json'});
   }
 
-  public signIn(request: any): Observable<any> {
-    return this.http.post('http://localhost:9192/api/v1/register', request, {responseType: 'text' as 'json'});
+  public postSignUp(request: any): Observable<any> {
+    return this.http.post('http://localhost:9192/api/v1/signup', request, {responseType: 'text' as 'json', observe: 'response'})
   }
 
   public getUser(token: string): Observable<any> {

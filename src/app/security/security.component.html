@@ -2,8 +2,8 @@
 
   <mat-card class="authentication-card">
     <mat-tab-group dynamicHeight>
-      <mat-tab label="Login">
-
+      <mat-tab label="Log In">
+        {{message}}
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Username</mat-label>
@@ -18,9 +18,10 @@
             <mat-icon matSuffix>lock</mat-icon>
           </mat-form-field>
         </p>
-        <button mat-button color="primary" (click)="getAccessToken()">Login</button>
+        <button mat-button color="primary" (click)="logIn()">Log In</button>
       </mat-tab>
-      <mat-tab label="Register">
+      <mat-tab label="Sign Up">
+        {{message}}
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Username</mat-label>
@@ -49,7 +50,7 @@
             <mat-icon matSuffix>email</mat-icon>
           </mat-form-field>
         </p>
-        <button mat-button color="primary" (click)="getRegisterToken()">Register</button>
+        <button mat-button color="primary" (click)="signUp()">Sign Up</button>
       </mat-tab>
     </mat-tab-group>
     <button mat-button color="primary" (click)="getUser()">Get user</button>

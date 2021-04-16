@@ -15,12 +15,18 @@ export class SecurityComponent {
     email: ''
   };
 
+  message = '';
+
   token: any;
 
   constructor(private service: JwtClientService) {}
 
-  public getRegisterToken(): void {
-    const resp = this.service.signIn(this.authRequest);
+  public signUp(): void {
+    const resp = this.service.postSignUp(this.authRequest);
+    resp.subscribe(
+      response => { this.message = response.status; },
+      err => {this.message = JSON.parse(err.error).message;
+      });
     resp.subscribe(data => {
       this.token = data;
       localStorage.setItem('jwt-roleplaymanager', JSON.stringify({ token: this.token}));
@@ -28,18 +34,26 @@ export class SecurityComponent {
   }
 
   public getUser(): void {
-    const currentUser = JSON.parse(<string> localStorage.getItem('jwt-roleplaymanager'));
+    const currentUser = JSON.parse(localStorage.getItem('jwt-roleplaymanager') as string);
     const token = currentUser.token; // your token
     console.log(token);
 
     const resp = this.service.getUser(token);
+    resp.subscribe(
+      response => { this.message = response.status; },
+      err => {this.message = JSON.parse(err.error).message;
+      });
     resp.subscribe(data => {
-      console.log(data)
+      console.log(data);
     });
   }
 
-  public getAccessToken(): void {
-    const resp = this.service.login(this.authRequest);
+  public logIn(): void {
+    const resp = this.service.postLogIn(this.authRequest);
+    resp.subscribe(
+      response => { this.message = response.status; },
+      err => {this.message = JSON.parse(err.error).message;
+      });
     resp.subscribe(data => {
       this.token = data;
       localStorage.setItem('currentUser', JSON.stringify({ token: this.token, name: 'roleplaymanagertoken' }));
