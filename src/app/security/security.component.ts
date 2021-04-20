@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { JwtClientService } from '../jwt-client.service';
 import {Route, Router} from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-security',
@@ -21,7 +23,7 @@ export class SecurityComponent {
 
   token: any;
 
-  constructor(private service: JwtClientService, private router: Router) {}
+  constructor(private service: JwtClientService, private router: Router, private snackBar: MatSnackBar) {}
 
   public signUp(): void {
 
@@ -31,35 +33,12 @@ export class SecurityComponent {
       this.authRequest.passwordConfirmation === '' ||
       this.authRequest.email === ''
     ) {
-      this.messageSign = 'Please enter your registration information';
+      this.snackBar.open('Please enter your registration information', 'Close', {duration: 4000});
       return;
     }
 
-    const resp = this.service.postSignUp(this.authRequest);
-    resp.subscribe(
-      response => { this.messageSign = response.status; },
-      err => {this.messageSign = JSON.parse(err.error).message;
-      });
-    resp.subscribe(data => {
-      this.token = data;
-      localStorage.setItem('jwt-rpmanager', JSON.stringify({ token: this.token }));
-      this.router.navigate(['/']);
-    });
-  }
-
-  public getUser(): void {
-    const currentUser = JSON.parse(localStorage.getItem('jwt-rpmanager') as string);
-    const token = currentUser.token; // your token
-    console.log(token);
-
-    const resp = this.service.getUser(token);
-    resp.subscribe(
-      response => { this.messageLog = response.status; },
-      err => {this.messageLog = JSON.parse(err.error).message;
-      });
-    resp.subscribe(data => {
-      console.log(data);
-    });
+    console.log('SIGNUPTEST');
+    this.subscribeAndAuth(this.service.postSignUp(this.authRequest));
   }
 
   public logIn(): void {
@@ -68,20 +47,25 @@ export class SecurityComponent {
       this.authRequest.username === '' ||
       this.authRequest.password === ''
     ) {
-      this.messageLog = 'Please enter your authentication information';
+      this.snackBar.open('Please enter your authentication information', 'Close', {duration: 4000});
       return;
     }
 
-    const resp = this.service.postLogIn(this.authRequest);
+    this.subscribeAndAuth(this.service.postLogIn(this.authRequest));
+  }
+
+  public subscribeAndAuth(resp: Observable<any>): void {
     resp.subscribe(
-      response => { this.messageLog = response.status; },
-      err => {this.messageLog = JSON.parse(err.error).message;
-      });
-    resp.subscribe(data => {
-      this.token = data;
-      localStorage.setItem('jwt-rpmanager', JSON.stringify({ token: this.token }));
-      this.router.navigate(['/']);
-    });
+      data => {
+        this.token = data;
+        this.snackBar.open('Authenticated', 'Close', {duration: 4000});
+        localStorage.setItem('jwt-rpmanager', JSON.stringify({ token: this.token }));
+        this.router.navigate(['/']);
+      },
+      err => {
+        this.snackBar.open(JSON.parse(err.error).message, 'Close', {duration: 4000});
+      }
+    );
   }
 
 }

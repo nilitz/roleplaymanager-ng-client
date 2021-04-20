@@ -14,12 +14,11 @@ export class JwtClientService {
   }
 
   public postSignUp(request: any): Observable<any> {
-    return this.http.post('http://localhost:9192/api/v1/signup', request, {responseType: 'text' as 'json', observe: 'response'})
+    return this.http.post('http://localhost:9192/api/v1/signup', request, {responseType: 'text' as 'json'});
   }
 
   public getUser(token: string): Observable<any> {
     const tokenStr = 'Bearer ' + token;
-    console.log(tokenStr);
     const headers = new HttpHeaders().set('Authorization', tokenStr);
     return this.http.get<string>('http://localhost:9192/api/v1/user/me', {headers, responseType: 'text' as 'json' });
   }
