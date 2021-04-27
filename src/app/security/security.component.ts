@@ -37,7 +37,6 @@ export class SecurityComponent {
       return;
     }
 
-    console.log('SIGNUPTEST');
     this.subscribeAndAuth(this.service.postSignUp(this.authRequest));
   }
 

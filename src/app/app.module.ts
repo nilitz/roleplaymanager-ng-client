@@ -21,6 +21,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeComponent } from './home/home.component';
 import {LoginRequiredInterceptor} from './login-required.interceptor';
+import { MatChipsModule} from '@angular/material/chips';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { RoleplayContainerComponent } from './roleplay-container/roleplay-container.component';
+import { BaseComponent } from './base/base.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -28,7 +33,9 @@ import {LoginRequiredInterceptor} from './login-required.interceptor';
     AppComponent,
     SecurityComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    RoleplayContainerComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,10 @@ import {LoginRequiredInterceptor} from './login-required.interceptor';
     MatSidenavModule,
     MatDividerModule,
     MatListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatChipsModule,
+    MatExpansionModule,
+    MatTooltipModule
   ],
   providers: [
     {
