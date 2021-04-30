@@ -2,13 +2,26 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {SecurityComponent} from './security/security.component';
 import {HomeComponent} from './home/home.component';
-import {BaseComponent} from './base/base.component';
+import {RoleplayDetailComponent} from './roleplay-detail/roleplay-detail.component';
+import {RoleplayComponent} from './roleplay/roleplay.component';
+import {AnonymousLayoutComponent} from './anonymous-layout/anonymous-layout.component';
+import {AuthenticatedLayoutComponent} from './authenticated-layout/authenticated-layout.component';
 
 const routes: Routes = [
-  { path: 'auth', component: SecurityComponent},
-  { path: '', component: BaseComponent},
-  { path: 'roleplay/create', component: BaseComponent},
-  { path: 'roleplay/join', component: BaseComponent}
+
+  { path: '', component: AuthenticatedLayoutComponent, canActivate : [  ], children: [
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent},
+      { path: 'roleplay', component: RoleplayComponent, children: [
+          { path: ':name', component: RoleplayDetailComponent}
+        ]
+      },
+    ]
+  },
+  { path: '', component: AnonymousLayoutComponent, children: [
+      { path: 'auth', component: SecurityComponent},
+    ]
+  },
 ];
 
 @NgModule({

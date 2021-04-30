@@ -13,7 +13,7 @@ import { MatInputModule  } from '@angular/material/input';
 import { MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { NavComponent } from './nav/nav.component';
+import {CreateRoleplayDialogComponent, NavComponent} from './nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
@@ -23,9 +23,12 @@ import { HomeComponent } from './home/home.component';
 import {LoginRequiredInterceptor} from './login-required.interceptor';
 import { MatChipsModule} from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { RoleplayContainerComponent } from './roleplay-container/roleplay-container.component';
-import { BaseComponent } from './base/base.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RoleplayDetailComponent } from './roleplay-detail/roleplay-detail.component';
+import { RoleplayComponent } from './roleplay/roleplay.component';
+import { AuthenticatedLayoutComponent } from './authenticated-layout/authenticated-layout.component';
+import { AnonymousLayoutComponent } from './anonymous-layout/anonymous-layout.component';
 
 
 @NgModule({
@@ -34,8 +37,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     SecurityComponent,
     NavComponent,
     HomeComponent,
-    RoleplayContainerComponent,
-    BaseComponent
+    RoleplayDetailComponent,
+    RoleplayComponent,
+    AuthenticatedLayoutComponent,
+    AnonymousLayoutComponent,
+    CreateRoleplayDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSnackBarModule,
     MatChipsModule,
     MatExpansionModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [
     {

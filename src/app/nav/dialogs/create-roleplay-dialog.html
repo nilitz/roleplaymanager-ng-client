@@ -1,0 +1,12 @@
+
+<div mat-dialog-content>
+  <p>Enter your new Roleplay Name.</p>
+  <mat-form-field>
+    <mat-label>New Roleplay Name</mat-label>
+    <input matInput [(ngModel)]="data.roleplayName">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Return</button>
+  <button mat-button [mat-dialog-close]="data.roleplayName" cdkFocusInitial>Create</button>
+</div>

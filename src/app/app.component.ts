@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
 
   helper = new JwtHelperService();
 
-  constructor(private router: Router) {
+  constructor(public router: Router) {
   }
 
   ngOnInit(): void {

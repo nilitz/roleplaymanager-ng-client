@@ -1,0 +1,96 @@
+@import "~src/rp-manager-theme"
+
+.page
+  min-height: 100%
+
+
+::ng-deep .mat-drawer-inner-container
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+.page-content
+  overflow-y: scroll
+  max-height: 100vh
+
+::-webkit-scrollbar
+  display: none
+
+
+h2
+  padding: 10px
+  text-align: center
+
+.sidebar-item a
+  text-align: center
+  min-width: 400px
+
+.bar
+  position: relative
+  background-color: white
+  color: $accent
+  //box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%)
+
+.top-bar
+  background-image: url("../../assets/img/Endless-Constellation-Teal.svg")
+  color: white
+
+.bar-spacer
+  flex: 1 1 auto
+
+.bar .username
+  font-size: 1rem
+
+.bar .mat-icon
+  font-size: 1.4rem
+
+.list-item
+  margin-top: 10px !important
+
+.expansion-panel
+  box-shadow: none !important
+
+::ng-deep .mat-expansion-panel-body
+  padding-bottom: 0 !important
+
+.expansion-panel .header
+  height: 48px !important
+
+.expansion-panel .title
+  color: #424242
+  align-items: flex-end
+  font-weight: 400
+
+.expansion-panel .title span
+  margin-left: 5px
+
+.expansion-panel .list
+  margin: 0
+  padding: 0
+  font-size: 0.8rem
+  list-style: none
+
+.expansion-panel .list li
+  width: 100%
+
+.expansion-panel .list li a
+  text-align: left
+  font-weight: 400
+  font-size: 0.85rem
+  color: #626262
+  width: 100%
+
+.expansion-panel .list li a.add
+  text-align: right
+  color: $primary
+
+.line-divider
+  height: 1px
+  position: relative
+  left: 10%
+  width: 80%
+  background-color: rgba(0, 0, 0, 0.12)
+
+.widget-container
+  display: flex
+  padding: 20px 20px 20px 20px
