@@ -2,65 +2,93 @@
 
   <mat-card class="authentication-card">
     <mat-card-title>
-      <h1>
+      <h1 style="display: none">
         RolePlayManager Auth Forms
       </h1>
     </mat-card-title>
     <mat-tab-group dynamicHeight>
+
       <mat-tab label="Log In">
-        <div class="alert-message" *ngIf="messageLog!=''">
-          {{messageLog}}
-        </div>
-        <p>
-          <mat-form-field appearance="legacy">
-            <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="authRequest.username" required>
-            <mat-icon matSuffix>account_circle</mat-icon>
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field appearance="legacy">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput [(ngModel)]="authRequest.password" required>
-            <mat-icon matSuffix>lock</mat-icon>
-          </mat-form-field>
-        </p>
-        <button mat-button color="primary" (click)="logIn()">Log In</button>
+        <form [formGroup]="logForm" (ngSubmit)="logIn()">
+          <p>
+            <mat-form-field appearance="legacy">
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="username"  required>
+              <mat-icon matSuffix>account_circle</mat-icon>
+              <mat-error *ngIf="logUsername != null && logUsername.touched && logUsername.invalid">
+                Username must be at least 5 Characters
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="legacy">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password"  required>
+              <mat-icon matSuffix>lock</mat-icon>
+              <mat-error *ngIf="logPassword != null && logPassword.touched && logPassword.invalid">
+                At least 8 chars, 1 upper, 1 lower, 1 number
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <button mat-button color="primary" type=submit [disabled]="logForm.invalid">Log In</button>
+        </form>
       </mat-tab>
+
+
       <mat-tab label="Sign Up">
-        <div class="alert-message" *ngIf="messageSign!=''">
-          {{messageSign}}
-        </div>
+        <form [formGroup]="signForm" (ngSubmit)="signUp()">
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="authRequest.username" required>
+            <input matInput formControlName="username" required>
             <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-hint align="end">
+              At least 5 Chars
+            </mat-hint>
+            <mat-error *ngIf="signUsername != null && signUsername.touched && signUsername.invalid">
+              At least 5 Chars
+            </mat-error>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Password</mat-label>
-            <input type="password" matInput [(ngModel)]="authRequest.password" required>
+            <input type="password" matInput formControlName="password" required>
+            <mat-hint align="end">
+              At least 8 chars, 1 upper, 1 lower, 1 number
+            </mat-hint>
+            <mat-error *ngIf="signPassword != null && signPassword.touched && signPassword.invalid">
+              At least 8 chars, 1 upper, 1 lower, 1 number
+            </mat-error>
             <mat-icon matSuffix>lock</mat-icon>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Confirm password</mat-label>
-            <input type="password" matInput [(ngModel)]="authRequest.passwordConfirmation" required>
+            <input type="password" matInput formControlName="passwordConfirmation" [errorStateMatcher]="matcher" required>
+            <mat-hint align="end">
+              Must match
+            </mat-hint>
+            <mat-error *ngIf="signForm.hasError('notSame')">
+              Passwords do not match
+            </mat-error>
             <mat-icon matSuffix>lock</mat-icon>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Email</mat-label>
-            <input type="email" matInput [(ngModel)]="authRequest.email" placeholder="name@example.com" required>
+            <input type="email" matInput formControlName="email" placeholder="name@example.com" required>
             <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="signEmail != null && signEmail.touched && signEmail.invalid">
+              Invalid Email
+            </mat-error>
           </mat-form-field>
         </p>
 
-        <button mat-button color="primary" (click)="signUp()">Sign Up</button>
+        <button mat-button color="primary" type=submit [disabled]="signForm.invalid">Sign Up</button>
+        </form>
       </mat-tab>
     </mat-tab-group>
   </mat-card>

@@ -16,10 +16,16 @@
 ::-webkit-scrollbar
   display: none
 
+.side-content
+  height: calc(100vh - 140px)
+  display: flex
+  flex-direction: column
+  align-content: flex-start
+  overflow-y: scroll
+::-webkit-scrollbar
+  display: none
 
-h2
-  padding: 10px
-  text-align: center
+
 
 .sidebar-item a
   text-align: center
@@ -29,11 +35,16 @@ h2
   position: relative
   background-color: white
   color: $accent
-  //box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%)
+  height: 55px !important
+  //box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1pxA 18px 0 rgb(0 0 0 / 12%)
 
 .top-bar
-  background-image: url("../../assets/img/Endless-Constellation-Teal.svg")
-  color: white
+  //background-image: url("../../assets/img/Endless-Constellation-Teal.svg")
+  color: $primary
+  height: 64px !important
+
+.top-bar h2
+  font-size: 1.3rem
 
 .bar-spacer
   flex: 1 1 auto
@@ -45,7 +56,6 @@ h2
   font-size: 1.4rem
 
 .list-item
-  margin-top: 10px !important
 
 .expansion-panel
   box-shadow: none !important
@@ -63,6 +73,7 @@ h2
 
 .expansion-panel .title span
   margin-left: 5px
+  font-size: 0.9rem
 
 .expansion-panel .list
   margin: 0

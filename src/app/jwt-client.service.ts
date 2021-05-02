@@ -13,11 +13,13 @@ export class JwtClientService {
   constructor(private http: HttpClient) { }
 
   public postLogIn(request: any): Observable<any> {
-    return this.http.post(this.api + 'login', request, {responseType: 'text' as 'json'});
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(this.api + 'login', request, {headers, responseType: 'text' as 'json'});
   }
 
   public postSignUp(request: any): Observable<any> {
-    return this.http.post(this.api + 'signup', request, {responseType: 'text' as 'json'});
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(this.api + 'signup', request, {headers, responseType: 'text' as 'json'});
   }
 
   public getUser(token: string): Observable<any> {
@@ -35,7 +37,6 @@ export class JwtClientService {
 
   public getUserPlayerRoleplay(token: string): Observable<any> {
     const tokenStr = 'Bearer ' + token;
-    console.log(token);
     const headers = new HttpHeaders().set('Authorization', tokenStr);
     return this.http.get<string>(this.api + 'roleplay/player', {headers, responseType: 'text' as 'json' });
   }
