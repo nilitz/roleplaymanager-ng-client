@@ -5,13 +5,58 @@
   padding: 20px 20px 20px 20px
 
 .top-infos
-  height: 400px
-  width: 100%
+  border-radius: 0
+  padding: 20px
+  background-image: url("../../assets/img/Wave-Red6.svg")
+  background-repeat: no-repeat!important
+  background-size: cover
+  height: 460px
+  color: white
 
 .rp-container
   flex-basis: 40%
   display: flex
   flex-wrap: wrap
 
+.top-bar
+  background-color: white
+  font-size: 18px
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12)
 
+
+.heading
+  width: max-content
+  display: flex
+  flex-direction: column
+  > div
+    overflow: hidden
+    > p
+      width: max-content
+      white-space: nowrap
+      margin: 0
+      line-height: 117%
+@for $i from 2 through 3
+  div.heading
+    > div
+      &:nth-child(#{$i})
+        > p
+          animation-delay: $i * 0.20s
+
+.slide-up
+  animation: slide-up 0.6s cubic-bezier(0.65, 0, 0.35, 1) both
+
+.top
+  font-size: 3rem
+  margin-bottom: 20px
+.sub
+  font-size: 1rem
+  font-style: italic
+  font-weight: normal
+
+
+@keyframes slide-up
+  0%
+    transform: translateY(100px)
+  100%
+    transform: translateY(0)
 

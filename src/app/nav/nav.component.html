@@ -24,7 +24,7 @@
 
           <ul class="list">
             <li *ngFor="let roleplay of GMRoleplays">
-              <a [routerLink]="['/roleplay', roleplay.name]" mat-button>{{roleplay.name}}</a>
+              <a [routerLink]="['/roleplay', roleplay.id]" mat-button>{{roleplay.name}}</a>
             </li>
             <li><a mat-button class="add" color="primary" (click)="openDialog()"><mat-icon matTooltip="Create" aria-hidden="false">add</mat-icon></a></li>
           </ul>
@@ -36,13 +36,12 @@
           <mat-expansion-panel-header class="header">
             <mat-panel-title class="title">
               <mat-icon aria-hidden="false">person</mat-icon>
-              <span>Player Parties</span>
+              <span>PC Parties</span>
             </mat-panel-title>
           </mat-expansion-panel-header>
           <ul class="list">
-            <li><a mat-button>Fatebound I</a></li>
-            <li><a mat-button>Fatebound II</a></li>
-            <li><a mat-button>Anozer</a></li>
+            <li><a mat-button matTooltip="Fatebound II">Cherry Lawson</a></li>
+            <li><a mat-button matTooltip="Fatebound I">Harrel Dashner</a></li>
             <li><a mat-button class="add" color="primary" routerLink="/roleplay/join" routerLinkActive="active"><mat-icon matTooltip="Join" aria-hidden="false">add</mat-icon></a></li>
           </ul>
         </mat-expansion-panel>

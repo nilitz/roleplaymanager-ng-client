@@ -1,9 +1,15 @@
 @import "~src/rp-manager-theme"
 
+.widget-container
+  display: flex
+  flex-wrap: wrap
+  padding: 10px
+  background-color: #fafafa
+
 .top-bar
   background-color: white
   color: #424242
-  font-size: 18px
+  font-size: 22px
 
 .top-tab-group
   background-color: white
@@ -12,3 +18,30 @@
   height: 40px !important
   padding: 0 18px !important
   min-width: 120px !important
+
+::ng-deep .mat-tab-body-content
+  background-color: #fafafa
+
+.widget-container .left-column
+  flex-basis: 25%
+
+.widget-container .right-column
+  flex-basis: 75%
+
+.widget-container .card
+  margin: 10px
+
+.description
+  padding: 0.4375em 0
+  border-top: 0.84375em solid transparent
+  text-align: justify
+
+
+
+.actions
+  text-align: right
+
+.actions ::ng-deep .mat-icon
+  font-size: 20px
+  height: 20px
+  width: 20px

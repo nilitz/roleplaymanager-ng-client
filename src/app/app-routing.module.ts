@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent},
       { path: 'roleplay', component: RoleplayComponent, children: [
-          { path: ':name', component: RoleplayDetailComponent}
+          { path: ':id', component: RoleplayDetailComponent}
         ]
       },
     ]

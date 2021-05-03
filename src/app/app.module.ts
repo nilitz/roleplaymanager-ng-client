@@ -15,15 +15,15 @@ import { MatInputModule  } from '@angular/material/input';
 import { MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import {CreateRoleplayDialogComponent, NavComponent} from './nav/nav.component';
+import { CreateRoleplayDialogComponent, NavComponent } from './nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeComponent } from './home/home.component';
-import {LoginRequiredInterceptor} from './login-required.interceptor';
-import { MatChipsModule} from '@angular/material/chips';
+import { LoginRequiredInterceptor } from './login-required.interceptor';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -31,6 +31,7 @@ import { RoleplayDetailComponent } from './roleplay-detail/roleplay-detail.compo
 import { RoleplayComponent } from './roleplay/roleplay.component';
 import { AuthenticatedLayoutComponent } from './authenticated-layout/authenticated-layout.component';
 import { AnonymousLayoutComponent } from './anonymous-layout/anonymous-layout.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { AnonymousLayoutComponent } from './anonymous-layout/anonymous-layout.co
     MatExpansionModule,
     MatTooltipModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule
   ],
   providers: [
     {

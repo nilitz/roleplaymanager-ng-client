@@ -100,7 +100,6 @@ export class NavComponent implements OnInit {
     resp.subscribe(
       data => {
         this.snackBar.open(postRoleplayRequest.name + ' Created', 'Close', {duration: 4000});
-        this.router.navigate(['/roleplay/', postRoleplayRequest.name]);
         this.getGMRoleplay();
       },
       err => {
