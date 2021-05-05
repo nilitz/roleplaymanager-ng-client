@@ -3,7 +3,7 @@
 <mat-drawer-container class="page">
   <mat-drawer class="side" mode="side" opened>
     <div>
-      <mat-toolbar class="bar top-bar" color="white">
+      <mat-toolbar class="bar top-bar" color="primary">
         <a mat-button routerLink="/home" routerLinkActive="active">
           <h2>RolePlayManager</h2>
         </a>
@@ -26,7 +26,7 @@
             <li *ngFor="let roleplay of GMRoleplays">
               <a [routerLink]="['/roleplay', roleplay.id]" mat-button>{{roleplay.name}}</a>
             </li>
-            <li><a mat-button class="add" color="primary" (click)="openDialog()"><mat-icon matTooltip="Create" aria-hidden="false">add</mat-icon></a></li>
+            <li><a mat-button matTooltip="Create" class="add" color="primary" (click)="openDialog()"><mat-icon aria-hidden="false">add</mat-icon></a></li>
           </ul>
         </mat-expansion-panel>
       </mat-accordion>
@@ -41,8 +41,12 @@
           </mat-expansion-panel-header>
           <ul class="list">
             <li><a mat-button matTooltip="Fatebound II">Cherry Lawson</a></li>
+            <li><a mat-button matTooltip="Fatebound II">Cherry Lawson</a></li>
             <li><a mat-button matTooltip="Fatebound I">Harrel Dashner</a></li>
-            <li><a mat-button class="add" color="primary" routerLink="/roleplay/join" routerLinkActive="active"><mat-icon matTooltip="Join" aria-hidden="false">add</mat-icon></a></li>
+            <li><a mat-button matTooltip="Join" class="add" routerLink="/roleplay/join" routerLinkActive="active">
+              <mat-icon aria-hidden="false">add</mat-icon>
+            </a>
+            </li>
           </ul>
         </mat-expansion-panel>
       </mat-accordion>
@@ -50,12 +54,12 @@
 
     <div>
       <div class="line-divider"></div>
-      <mat-toolbar class="bar" color="white">
+      <mat-toolbar class="bar" color="primary">
         <a mat-button routerLink="/" routerLinkActive="active">
           <h3 class="username">{{username}}</h3>
         </a>
         <span class="bar-spacer"></span>
-        <a class="action" mat-icon-button routerLink="/auth" matTooltip="Log Out" routerLinkActive="active" color="primary" (click)="logOut()">
+        <a class="action" mat-icon-button routerLink="/auth" matTooltip="Log Out" routerLinkActive="active" color="white" (click)="logOut()">
           <mat-icon>logout</mat-icon>
         </a>
       </mat-toolbar>

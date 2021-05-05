@@ -46,6 +46,12 @@ export class JwtClientService {
     return this.http.post(this.api + 'roleplay/' + id + '/desc', request, {headers, responseType: 'text' as 'json' });
   }
 
+  public postRoleplayName(token: string, id: string, request: any): Observable<any> {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr).set('Content-Type', 'application/json');
+    return this.http.post(this.api + 'roleplay/' + id + '/name', request, {headers, responseType: 'text' as 'json' });
+  }
+
   public getUserPlayerRoleplay(token: string): Observable<any> {
     const tokenStr = 'Bearer ' + token;
     const headers = new HttpHeaders().set('Authorization', tokenStr);
@@ -59,6 +65,7 @@ export class JwtClientService {
     const headers = new HttpHeaders().set('Authorization', tokenStr);
     return this.http.get<string>(this.api + 'roleplay/gm', {headers, responseType: 'text' as 'json' });
   }
+
 
 
 }

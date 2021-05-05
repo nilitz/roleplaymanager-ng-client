@@ -32,6 +32,7 @@ import { RoleplayComponent } from './roleplay/roleplay.component';
 import { AuthenticatedLayoutComponent } from './authenticated-layout/authenticated-layout.component';
 import { AnonymousLayoutComponent } from './anonymous-layout/anonymous-layout.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { RoleplayItemsComponent } from './roleplay-items/roleplay-items.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     RoleplayComponent,
     AuthenticatedLayoutComponent,
     AnonymousLayoutComponent,
-    CreateRoleplayDialogComponent
+    CreateRoleplayDialogComponent,
+    RoleplayItemsComponent
   ],
   imports: [
     BrowserModule,

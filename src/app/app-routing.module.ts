@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: '', component: AuthenticatedLayoutComponent, canActivate : [  ], children: [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent},
-      { path: 'roleplay', component: RoleplayComponent, children: [
-          { path: ':id', component: RoleplayDetailComponent}
+      { path: 'roleplay', children: [
+          { path: ':id', component: RoleplayComponent}
         ]
       },
     ]

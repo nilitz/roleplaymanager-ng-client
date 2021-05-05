@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {JwtClientService} from '../jwt-client.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-roleplay-detail',
@@ -9,21 +10,18 @@ import {JwtClientService} from '../jwt-client.service';
 })
 export class RoleplayDetailComponent implements OnInit {
   id: any;
-  roleplay: any;
+
   description: any;
   editedDescription: any;
   editingDescription = false;
 
-  token = JSON.parse(localStorage.getItem('jwt-rpmanager') as string).token;
-
-
-
-  descPostRequest: { description: string } = {
-    description: '',
+  stringPostRequest: { postedString: string } = {
+    postedString: '',
   };
 
+  token = JSON.parse(localStorage.getItem('jwt-rpmanager') as string).token;
 
-  constructor(private route: ActivatedRoute, private service: JwtClientService) {}
+  constructor(private route: ActivatedRoute, private service: JwtClientService, private snackBar: MatSnackBar, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -33,39 +31,35 @@ export class RoleplayDetailComponent implements OnInit {
       resp.subscribe(
         data => {
           const parsed = JSON.parse(data);
-          this.roleplay = parsed.name;
           this.description = parsed.description;
-          this.editedDescription = parsed.description;
+          this.editedDescription = this.description;
         },
         err => {
-          console.log(err);
+          this.snackBar.open(err, 'Error during loading', {duration: 4000});
+          this.router.navigate(['/']);
         }
       );
     });
   }
 
 
-  onCancelClick(): void {
+  onDescCancelClick(): void {
     this.editedDescription = this.description;
     this.editingDescription = false;
   }
-  onValidateClick(): void {
+  onDescValidateClick(): void {
     this.description = this.editedDescription;
     this.editingDescription = false;
-    this.descPostRequest.description = this.description;
-    const resp = this.service.postRoleplayDesc(this.token, this.id, this.descPostRequest);
+    this.stringPostRequest.postedString = this.description;
+    const resp = this.service.postRoleplayDesc(this.token, this.id, this.stringPostRequest);
 
     resp.subscribe(
-      data => {
-        console.log(data);
+      () => {
+        this.snackBar.open('Description edited successfully', 'Close', {duration: 4000});
       },
       err => {
-        console.log(err);
+        this.snackBar.open(err, 'Close', {duration: 4000});
       }
     );
   }
-
-
-
-
 }

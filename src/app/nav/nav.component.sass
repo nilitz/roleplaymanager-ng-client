@@ -16,8 +16,12 @@
 ::-webkit-scrollbar
   display: none
 
+.side
+  background-color: $primary
+
 .side-content
   height: calc(100vh - 140px)
+  background-color: $primary
   display: flex
   flex-direction: column
   align-content: flex-start
@@ -53,25 +57,32 @@
 .bar .mat-icon
   font-size: 1.4rem
 
-.list-item
-
 .expansion-panel
   box-shadow: none !important
+  border-radius: 0 !important
+  background-color: $primary
+
+::ng-deep .mat-accordion
+  margin-bottom: 5px
 
 ::ng-deep .mat-expansion-panel-body
   padding-bottom: 0 !important
+
+::ng-deep .mat-expansion-indicator::after
+  color: white
 
 .expansion-panel .header
   height: 48px !important
 
 .expansion-panel .title
-  color: #424242
+  color: white
   align-items: flex-end
   font-weight: 400
 
 .expansion-panel .title span
-  margin-left: 5px
-  font-size: 0.9rem
+  padding-left: 15px
+  font-weight: 400
+  font-size: 0.90rem
 
 .expansion-panel .list
   margin: 0
@@ -86,16 +97,15 @@
   text-align: left
   font-weight: 400
   font-size: 0.85rem
-  color: #626262
+  color: rgba(255, 255, 255, 0.97)
+  margin-top: 1px
   width: 100%
-
-
 
 .expansion-panel .list li a .list-item-title
   text-align: left
   font-weight: 400
   font-size: 0.85rem
-  color: #626262
+  color: white
   width: 100%
 
 .expansion-panel .list li a .list-item-subtitle
@@ -103,13 +113,14 @@
 
   font-weight: 400
   font-size: 0.6rem
-  color: #626262
+  color: white
   width: 100%
 
 
 .expansion-panel .list li a.add
-  text-align: right
-  color: $primary
+  text-align: center
+  color: white
+  background: rgba(0, 0, 0, 0.04)
 
 .line-divider
   height: 1px

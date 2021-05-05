@@ -1,74 +1,48 @@
-<mat-toolbar class="top-bar">
-  <span>{{roleplay}}</span>
-</mat-toolbar>
-<mat-tab-group class="top-tab-group" dynamicHeight>
-  <mat-tab class="mat-tab" label="Details">
-    <ng-template matTabContent style="background-color: #fafafa">
-      <div class="widget-container">
-
-        <div class="left-column">
-          <mat-card class="card">
-            <img mat-card-image src="https://t4.ftcdn.net/jpg/02/46/70/99/360_F_246709940_ry8UwBa2wxuXNeYYVQklFdYwvU4quEMc.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-header>
-              <mat-card-title>
-                Description
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content *ngIf="!editingDescription" class="description">
-              {{description}}
-            </mat-card-content>
-            <mat-card-content *ngIf="editingDescription">
-              <mat-form-field style="width: 100%">
-                <textarea matInput [(ngModel)]="editedDescription"></textarea>
-              </mat-form-field>
-            </mat-card-content>
-            <mat-card-actions class="actions">
-              <button mat-icon-button *ngIf="!editingDescription" (click)="editingDescription = !editingDescription"><mat-icon>edit</mat-icon></button>
-              <button mat-icon-button *ngIf="editingDescription" (click)="onCancelClick()"><mat-icon>close</mat-icon></button>
-              <button mat-icon-button *ngIf="editingDescription" (click)="onValidateClick()"><mat-icon>done</mat-icon></button>
-            </mat-card-actions>
-          </mat-card>
-          <mat-card class="card">
-            <mat-card-header>
-              <mat-card-title>
-                Statistics
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <div class="right-column">
+ <div class="left-column">
+  <mat-card class="card">
+    <img mat-card-image src="https://t4.ftcdn.net/jpg/02/46/70/99/360_F_246709940_ry8UwBa2wxuXNeYYVQklFdYwvU4quEMc.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-header>
+      <mat-card-title>
+        Description
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf="!editingDescription" class="description">
+      {{description}}
+    </mat-card-content>
+    <mat-card-content *ngIf="editingDescription">
+      <mat-form-field class="description-input">
+        <textarea wrap="soft" matInput [(ngModel)]="editedDescription"></textarea>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions class="description-actions">
+      <button mat-icon-button *ngIf="!editingDescription" (click)="editingDescription = !editingDescription"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button *ngIf="editingDescription" (click)="onDescCancelClick()"><mat-icon>close</mat-icon></button>
+      <button mat-icon-button *ngIf="editingDescription" (click)="onDescValidateClick()"><mat-icon>done</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>
+        Statistics
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="right-column">
 
 
-          <mat-card class="card">
-            <mat-card-header>
-              <mat-card-title>
-                Files
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>
+        Files
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
 
-            </mat-card-content>
-          </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>
 
-
-        </div>
-
-
-
-      </div>
-    </ng-template>
-  </mat-tab>
-  <mat-tab class="mat-tab" label="Marketplaces">
-    <ng-template matTabContent>
-      <div class="widget-container">qsdqs</div>
-    </ng-template>
-  </mat-tab>
-  <mat-tab class="mat-tab" label="Playable Characters" style="">
-    <ng-template matTabContent>
-      <div class="widget-container">qsdqsd</div>
-    </ng-template>
-  </mat-tab>
-</mat-tab-group>

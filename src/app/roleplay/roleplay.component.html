@@ -1,1 +1,43 @@
-<router-outlet></router-outlet>
+<mat-toolbar class="top-bar">
+  <span *ngIf="!editingName">{{name}}</span>
+  <span class="roleplay-input" *ngIf="editingName">
+    <input type="text" [(ngModel)]="editedName"/>
+  </span>
+
+  <div class="roleplay-actions">
+    <button mat-icon-button *ngIf="!editingName" (click)="editingName = !editingName"><mat-icon>edit</mat-icon></button>
+    <button mat-icon-button *ngIf="editingName" (click)="onNameCancelClick()"><mat-icon>close</mat-icon></button>
+    <button mat-icon-button *ngIf="editingName" (click)="onNameValidateClick()"><mat-icon>done</mat-icon></button>
+
+  </div>
+</mat-toolbar>
+<mat-tab-group class="top-tab-group" dynamicHeight>
+
+  <mat-tab class="mat-tab" label="Details">
+    <ng-template matTabContent style="background-color: #fafafa">
+      <app-roleplay-detail class="widget-container"></app-roleplay-detail>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab class="mat-tab" label="Marketplaces">
+    <ng-template matTabContent>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab class="mat-tab" label="Items">
+    <ng-template matTabContent>
+      <app-roleplay-items class="widget-container"></app-roleplay-items>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab class="mat-tab" label="Characters">
+    <ng-template matTabContent>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab class="mat-tab" label="GM & Players">
+    <ng-template matTabContent>
+    </ng-template>
+  </mat-tab>
+
+</mat-tab-group>
