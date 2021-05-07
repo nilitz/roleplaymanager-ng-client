@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {JwtClientService} from '../jwt-client.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {StringPostRequest} from '../request';
 
 @Component({
   selector: 'app-nav',
@@ -18,8 +19,6 @@ export class NavComponent implements OnInit {
   username = '';
   GMRoleplays: any;
   PlayingRoleplays: any;
-
-
 
 
   ngOnInit(): void {
@@ -82,24 +81,22 @@ export class NavComponent implements OnInit {
 
   public postRoleplay(roleplayName: string): void {
 
-    const postRoleplayRequest: { name: string } = {
-      name: roleplayName
-    };
+    const request = new StringPostRequest(roleplayName);
 
     const token = JSON.parse(localStorage.getItem('jwt-rpmanager') as string).token;
 
     if (
-      postRoleplayRequest.name === '' || postRoleplayRequest.name.length > 25
+      request.stringPostRequest.postedString === '' || request.stringPostRequest.postedString.length > 25
     ) {
       this.snackBar.open('The name must be between 1 & 24 characters', 'Close', {duration: 4000});
       return;
     }
 
-    const resp = this.service.postRoleplay(token, postRoleplayRequest);
+    const resp = this.service.postRoleplay(token, request.stringPostRequest);
 
     resp.subscribe(
       data => {
-        this.snackBar.open(postRoleplayRequest.name + ' Created', 'Close', {duration: 4000});
+        this.snackBar.open(request.stringPostRequest.postedString + ' Created', 'Close', {duration: 4000});
         this.getGMRoleplay();
       },
       err => {

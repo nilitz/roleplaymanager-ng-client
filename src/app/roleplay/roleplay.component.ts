@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {JwtClientService} from '../jwt-client.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {StringPostRequest} from '../request';
 
 @Component({
   selector: 'app-roleplay',
@@ -14,13 +15,12 @@ export class RoleplayComponent implements OnInit {
   name: any;
   editedName: any;
   editingName = false;
-  stringPostRequest: { postedString: string } = {
-    postedString: '',
-  };
 
   token = JSON.parse(localStorage.getItem('jwt-rpmanager') as string).token;
 
-  constructor(private route: ActivatedRoute, private service: JwtClientService, private snackBar: MatSnackBar, private router: Router) {}
+  constructor(private route: ActivatedRoute, private service: JwtClientService, private snackBar: MatSnackBar, private router: Router) {
+
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -46,12 +46,13 @@ export class RoleplayComponent implements OnInit {
     this.editedName = this.name;
     this.editingName = false;
   }
+
   onNameValidateClick(): void {
     this.name = this.editedName;
     this.editingName = false;
-    this.stringPostRequest.postedString = this.name;
+    const request = new StringPostRequest(this.name);
 
-    const resp = this.service.postRoleplayName(this.token, this.id, this.stringPostRequest);
+    const resp = this.service.postRoleplayName(this.token, this.id, request.stringPostRequest);
 
     resp.subscribe(
       () => {

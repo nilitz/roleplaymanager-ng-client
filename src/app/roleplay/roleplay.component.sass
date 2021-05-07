@@ -1,14 +1,19 @@
+@import "~src/rp-manager-theme"
+
+$background-grey: #eeeeee
 
 .widget-container
   display: flex
   flex-wrap: wrap
   padding: 10px
-  background-color: #fafafa
+  background-color: $background-grey
+  min-height: calc(100vh - 64px - 41px)
 
 
 .top-bar
   background-color: white
   color: #424242
+  height: 64px !important
   font-size: 22px
 
 .top-tab-group
@@ -19,19 +24,22 @@
   padding: 0 18px !important
   min-width: 120px !important
 
-::ng-deep .mat-tab-body-content
-  background-color: #fafafa
 
 .roleplay-input input
   color: #424242
   font: 500 22px Roboto, "Helvetica Neue", sans-serif
   border: none
-  padding: 0
   overflow-wrap: break-word
-  border-bottom: solid 1px #424242
+  margin-right: 20px
+  padding: 5px
+  border-bottom: $primary 2px solid
 
 .roleplay-input input:focus
   outline: none
+
+.roleplay-title
+  margin-right: 20px
+  padding: 5px
 
 .roleplay-actions
   display: flex
@@ -46,3 +54,8 @@
   line-height: 20px
 
 
+::ng-deep .mat-tab-body-wrapper
+  background-color: $background-grey
+
+::ng-deep .mat-drawer-container
+  background-color: $background-grey !important

@@ -27,12 +27,16 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
-import { RoleplayDetailComponent } from './roleplay-detail/roleplay-detail.component';
+import { RoleplayDetailComponent} from './roleplay-detail/roleplay-detail.component';
 import { RoleplayComponent } from './roleplay/roleplay.component';
 import { AuthenticatedLayoutComponent } from './authenticated-layout/authenticated-layout.component';
 import { AnonymousLayoutComponent } from './anonymous-layout/anonymous-layout.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RoleplayItemsComponent } from './roleplay-items/roleplay-items.component';
+import { AutoSizeInputModule } from 'ngx-autosize-input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -70,7 +74,11 @@ import { RoleplayItemsComponent } from './roleplay-items/roleplay-items.componen
     MatTooltipModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatGridListModule
+    MatGridListModule,
+    AutoSizeInputModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [
     {

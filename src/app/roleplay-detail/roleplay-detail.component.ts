@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {JwtClientService} from '../jwt-client.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {StringPostRequest} from '../request';
 
 @Component({
   selector: 'app-roleplay-detail',
@@ -15,17 +16,13 @@ export class RoleplayDetailComponent implements OnInit {
   editedDescription: any;
   editingDescription = false;
 
-  stringPostRequest: { postedString: string } = {
-    postedString: '',
-  };
-
   token = JSON.parse(localStorage.getItem('jwt-rpmanager') as string).token;
 
   constructor(private route: ActivatedRoute, private service: JwtClientService, private snackBar: MatSnackBar, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.id = params['id'];
+      this.id = params.id;
       const resp = this.service.getRoleplay(this.token, this.id);
 
       resp.subscribe(
@@ -42,6 +39,16 @@ export class RoleplayDetailComponent implements OnInit {
     });
   }
 
+  autoGrow(): void {
+    const element = document.querySelector('.textarea-resize') as HTMLElement;
+    element.style.height = '5px';
+    element.style.height = (element.scrollHeight) + 'px';
+  }
+
+  onDescEditClick(): void {
+    this.editingDescription = !this.editingDescription;
+    const element = document.querySelector('.textarea-resize') as HTMLElement;
+  }
 
   onDescCancelClick(): void {
     this.editedDescription = this.description;
@@ -50,8 +57,10 @@ export class RoleplayDetailComponent implements OnInit {
   onDescValidateClick(): void {
     this.description = this.editedDescription;
     this.editingDescription = false;
-    this.stringPostRequest.postedString = this.description;
-    const resp = this.service.postRoleplayDesc(this.token, this.id, this.stringPostRequest);
+
+    const request = new StringPostRequest(this.description);
+
+    const resp = this.service.postRoleplayDesc(this.token, this.id, request.stringPostRequest);
 
     resp.subscribe(
       () => {

@@ -1,46 +1,54 @@
- <div class="left-column">
+
+<div class="left-column">
   <mat-card class="card">
     <img mat-card-image src="https://t4.ftcdn.net/jpg/02/46/70/99/360_F_246709940_ry8UwBa2wxuXNeYYVQklFdYwvU4quEMc.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-header>
-      <mat-card-title>
+    <mat-card-header class="card-header">
+      <mat-card-title class="title">
+        <mat-icon class="icon">
+          subject
+        </mat-icon>
         Description
       </mat-card-title>
     </mat-card-header>
-    <mat-card-content *ngIf="!editingDescription" class="description">
+    <mat-card-content *ngIf="!editingDescription" class="description content">
       {{description}}
     </mat-card-content>
-    <mat-card-content *ngIf="editingDescription">
-      <mat-form-field class="description-input">
-        <textarea wrap="soft" matInput [(ngModel)]="editedDescription"></textarea>
+    <mat-card-content class="content" *ngIf="editingDescription">
+      <mat-form-field class="description-input" appearance="standard">
+        <textarea wrap="soft" matInput cdkTextareaAutosize cdkAutosizeMinRows="1" [(ngModel)]="editedDescription"></textarea>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions class="description-actions">
-      <button mat-icon-button *ngIf="!editingDescription" (click)="editingDescription = !editingDescription"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button *ngIf="!editingDescription" (click)="onDescEditClick()"><mat-icon>edit</mat-icon></button>
       <button mat-icon-button *ngIf="editingDescription" (click)="onDescCancelClick()"><mat-icon>close</mat-icon></button>
       <button mat-icon-button *ngIf="editingDescription" (click)="onDescValidateClick()"><mat-icon>done</mat-icon></button>
     </mat-card-actions>
   </mat-card>
   <mat-card class="card">
-    <mat-card-header>
-      <mat-card-title>
+    <mat-card-header class="card-header">
+      <mat-card-title class="title">
+        <mat-icon class="icon">
+          query_stats
+        </mat-icon>
         Statistics
       </mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="content">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
     </mat-card-content>
   </mat-card>
 </div>
 <div class="right-column">
-
-
   <mat-card class="card">
-    <mat-card-header>
-      <mat-card-title>
+    <mat-card-header class="card-header">
+      <mat-card-title class="title">
+        <mat-icon class="icon">
+          insert_drive_file
+        </mat-icon>
         Files
       </mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="content">
 
     </mat-card-content>
   </mat-card>

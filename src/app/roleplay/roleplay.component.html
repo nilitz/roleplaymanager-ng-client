@@ -1,7 +1,8 @@
 <mat-toolbar class="top-bar">
-  <span *ngIf="!editingName">{{name}}</span>
+  <span class="roleplay-title" *ngIf="!editingName">{{name}}</span>
+
   <span class="roleplay-input" *ngIf="editingName">
-    <input type="text" [(ngModel)]="editedName"/>
+    <input type="text" autoSizeInput id="input-text" [(ngModel)]="editedName"/>
   </span>
 
   <div class="roleplay-actions">
@@ -14,29 +15,29 @@
 <mat-tab-group class="top-tab-group" dynamicHeight>
 
   <mat-tab class="mat-tab" label="Details">
-    <ng-template matTabContent style="background-color: #fafafa">
+    <ng-template matTabContent class="template">
       <app-roleplay-detail class="widget-container"></app-roleplay-detail>
     </ng-template>
   </mat-tab>
 
   <mat-tab class="mat-tab" label="Marketplaces">
-    <ng-template matTabContent>
+    <ng-template matTabContent class="template">
     </ng-template>
   </mat-tab>
 
   <mat-tab class="mat-tab" label="Items">
-    <ng-template matTabContent>
+    <ng-template matTabContent class="template">
       <app-roleplay-items class="widget-container"></app-roleplay-items>
     </ng-template>
   </mat-tab>
 
   <mat-tab class="mat-tab" label="Characters">
-    <ng-template matTabContent>
+    <ng-template matTabContent class="template">
     </ng-template>
   </mat-tab>
 
   <mat-tab class="mat-tab" label="GM & Players">
-    <ng-template matTabContent>
+    <ng-template matTabContent class="template">
     </ng-template>
   </mat-tab>
 

@@ -32,7 +32,8 @@
             ],
             "styles": [
               "src/rp-manager-theme.sass",
-              "src/styles.sass"
+              "src/styles.sass",
+              "src/styles/card.sass"
             ],
             "scripts": []
           },

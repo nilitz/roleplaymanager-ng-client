@@ -58,7 +58,6 @@ export class JwtClientService {
     return this.http.get<string>(this.api + 'roleplay/player', {headers, responseType: 'text' as 'json' });
   }
 
-
   public getUserGMRoleplay(token: string): Observable<any> {
     console.log(token);
     const tokenStr = 'Bearer ' + token;
@@ -66,6 +65,29 @@ export class JwtClientService {
     return this.http.get<string>(this.api + 'roleplay/gm', {headers, responseType: 'text' as 'json' });
   }
 
+  public getItemType(token: string, id: string): Observable<any> {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.get<string>(this.api + 'roleplay/' + id + '/item-type', {headers, responseType: 'text' as 'json' });
+  }
+
+  public postItemType(token: string, id: string, request: any): Observable<any> {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.post(this.api + 'roleplay/' + id + '/item-type', request, {headers, responseType: 'text' as 'json' });
+  }
+
+  public getItem(token: string, id: string): Observable<any> {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.get<string>(this.api + 'roleplay/' + id + '/item', {headers, responseType: 'text' as 'json' });
+  }
+
+  public postItem(token: string, id: string, request: any): Observable<any> {
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.post(this.api + 'roleplay/' + id + '/item', request, {headers, responseType: 'text' as 'json' });
+  }
 
 
 }

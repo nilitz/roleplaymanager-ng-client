@@ -6,23 +6,15 @@
 .right-column
   flex-basis: 75%
 
-.card
-  margin: 10px
-
-.description
-  padding: 0.4375em 0
-  border-top: 0.84375em solid transparent
-  text-align: justify
-
 .description-input
   width: 100%
 
 .description-input textarea
   text-align: justify
-  min-height: 200px
   font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif
   padding: 0
-  overflow-y: hidden
+  overflow: hidden
+  min-height: 50px
 
 .description-actions
   padding: 0
@@ -33,4 +25,12 @@
   height: 20px
   width: 20px
   line-height: 20px
+  color: rgba(0,0,0,0.54)
+
+::ng-deep .mat-form-field-flex
+  padding: 0 !important
+
+::ng-deep .mat-form-field-infix
+  padding: 0 0 0.5em
+  border: none
 

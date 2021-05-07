@@ -9,8 +9,7 @@
         </a>
       </mat-toolbar>
     </div>
-
-
+    <mat-divider></mat-divider>
     <div class="side-content">
       <mat-accordion>
         <mat-expansion-panel class="expansion-panel list-item">
@@ -26,7 +25,6 @@
             <li *ngFor="let roleplay of GMRoleplays">
               <a [routerLink]="['/roleplay', roleplay.id]" mat-button>{{roleplay.name}}</a>
             </li>
-            <li><a mat-button matTooltip="Create" class="add" color="primary" (click)="openDialog()"><mat-icon aria-hidden="false">add</mat-icon></a></li>
           </ul>
         </mat-expansion-panel>
       </mat-accordion>
@@ -41,19 +39,19 @@
           </mat-expansion-panel-header>
           <ul class="list">
             <li><a mat-button matTooltip="Fatebound II">Cherry Lawson</a></li>
-            <li><a mat-button matTooltip="Fatebound II">Cherry Lawson</a></li>
             <li><a mat-button matTooltip="Fatebound I">Harrel Dashner</a></li>
-            <li><a mat-button matTooltip="Join" class="add" routerLink="/roleplay/join" routerLinkActive="active">
-              <mat-icon aria-hidden="false">add</mat-icon>
-            </a>
-            </li>
           </ul>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
 
     <div>
-      <div class="line-divider"></div>
+      <mat-divider></mat-divider>
+      <div class="nav-actions">
+        <a mat-button (click)="openDialog()">Create</a>
+        <a mat-button routerLink="/roleplay/join" routerLinkActive="active">Join</a>
+      </div>
+      <mat-divider></mat-divider>
       <mat-toolbar class="bar" color="primary">
         <a mat-button routerLink="/" routerLinkActive="active">
           <h3 class="username">{{username}}</h3>
