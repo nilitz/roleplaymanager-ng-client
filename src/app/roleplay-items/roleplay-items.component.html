@@ -28,6 +28,7 @@
         </mat-icon>
         Items
       </mat-card-title>
+
     </mat-card-header>
     <mat-card-content class="content">
 
@@ -56,13 +57,15 @@
 
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No data matching the filter ""</td>
+          <td class="mat-cell" colspan="4">No data matching the filter</td>
         </tr>
       </table>
 
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
-
+      <button mat-mini-fab color="primary" (click)="openDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
 
     </mat-card-content>
   </mat-card>
@@ -81,6 +84,18 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content class="content">
+
+      <mat-form-field appearance="legacy" class="search-field">
+        <input matInput [value]="this.newItemType" [(ngModel)]="this.newItemType" (keyup.enter)="addItemType()">
+        <mat-icon matSuffix>add</mat-icon>
+      </mat-form-field>
+
+      <mat-chip-list>
+        <mat-chip *ngFor="let type of itemTypes" [removable]=true (removed)="removeItemType(type)">
+          {{type.name}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
 
     </mat-card-content>
   </mat-card>

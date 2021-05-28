@@ -1,5 +1,7 @@
 @import "~src/rp-manager-theme"
 
+$background-grey: #eeeeee
+
 .widget-container
   display: flex
   padding: 20px 20px 20px 20px
@@ -7,11 +9,12 @@
 .top-infos
   border-radius: 0
   padding: 20px
-  background-image: url("../../assets/img/Wave-Red6.svg")
+  background-image: url("../../assets/img/Wave-Red9.svg")
   background-repeat: no-repeat!important
-  background-size: cover
-  height: 460px
-  color: white
+  background-color: transparent
+  height: 500px
+  opacity: 1
+  color: #FFFFFF
 
 .rp-container
   flex-basis: 40%
@@ -53,6 +56,8 @@
   font-style: italic
   font-weight: normal
 
+::ng-deep .mat-drawer-container
+  background-color:  $background-grey !important
 
 @keyframes slide-up
   0%

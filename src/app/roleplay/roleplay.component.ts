@@ -59,7 +59,6 @@ export class RoleplayComponent implements OnInit {
         this.snackBar.open('Name edited successfully', 'Close', {duration: 4000});
       },
       err => {
-
         this.snackBar.open(err, 'Close', {duration: 4000});
       }
     );

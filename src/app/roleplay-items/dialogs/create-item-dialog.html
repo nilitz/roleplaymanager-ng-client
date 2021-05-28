@@ -1,0 +1,15 @@
+<div mat-dialog-content>
+  <p>Item Creation Interface</p>
+  <mat-form-field>
+    <mat-label>Item Name</mat-label>
+    <input matInput [(ngModel)]="data.item.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Item Description</mat-label>
+    <input matInput [(ngModel)]="data.item.description">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Return</button>
+  <button mat-button [mat-dialog-close]="data.item" cdkFocusInitial>Create</button>
+</div>

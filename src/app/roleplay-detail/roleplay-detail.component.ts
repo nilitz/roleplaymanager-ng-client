@@ -54,6 +54,7 @@ export class RoleplayDetailComponent implements OnInit {
     this.editedDescription = this.description;
     this.editingDescription = false;
   }
+
   onDescValidateClick(): void {
     this.description = this.editedDescription;
     this.editingDescription = false;

@@ -32,7 +32,7 @@ import { RoleplayComponent } from './roleplay/roleplay.component';
 import { AuthenticatedLayoutComponent } from './authenticated-layout/authenticated-layout.component';
 import { AnonymousLayoutComponent } from './anonymous-layout/anonymous-layout.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { RoleplayItemsComponent } from './roleplay-items/roleplay-items.component';
+import {CreateItemDialogComponent, RoleplayItemsComponent} from './roleplay-items/roleplay-items.component';
 import { AutoSizeInputModule } from 'ngx-autosize-input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -50,7 +50,8 @@ import { MatSortModule } from '@angular/material/sort';
     AuthenticatedLayoutComponent,
     AnonymousLayoutComponent,
     CreateRoleplayDialogComponent,
-    RoleplayItemsComponent
+    RoleplayItemsComponent,
+    CreateItemDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -73,7 +73,7 @@ export class JwtClientService {
 
   public postItemType(token: string, id: string, request: any): Observable<any> {
     const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    const headers = new HttpHeaders().set('Authorization', tokenStr).set('Content-Type', 'application/json');
     return this.http.post(this.api + 'roleplay/' + id + '/item-type', request, {headers, responseType: 'text' as 'json' });
   }
 
@@ -85,7 +85,7 @@ export class JwtClientService {
 
   public postItem(token: string, id: string, request: any): Observable<any> {
     const tokenStr = 'Bearer ' + token;
-    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    const headers = new HttpHeaders().set('Authorization', tokenStr).set('Content-Type', 'application/json');
     return this.http.post(this.api + 'roleplay/' + id + '/item', request, {headers, responseType: 'text' as 'json' });
   }
 
